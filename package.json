@@ -1,0 +1,32 @@
+{
+  "name": "letojs",
+  "version": "0.0.1",
+  "description": "A Framework, for building real-time appications",
+  "main": "leto.js",
+  "bin": {
+    "leto": "leto.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/HelixOne/letojs.git"
+  },
+  "keywords": [
+    "leto"
+  ],
+  "author": {
+    "name": "Zubair Lawrence",
+    "email": "leto@helix.one"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HelixOne/letojs/issues"
+  },
+  "homepage": "https://github.com/HelixOne/letojs#readme",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "fs-extra": "^0.26.5"
+  }
+}

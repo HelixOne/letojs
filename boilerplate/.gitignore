@@ -210,7 +210,3 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
-
-# Javscript Files and Map Files (Use Typescript .ts)
-*.map
-*.js

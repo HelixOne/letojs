@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Leto</title>
+
+    <!-- 0 Detect Platform -->
+    <!-- 1. Load libraries -->
+    <!-- IE required polyfills, in this exact order -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://localhost:8080/es6-shim/es6-shim.min.js"></script>
+    <script src="http://localhost:8080/systemjs/dist/system-polyfills.js"></script>
+
+    <script src="http://localhost:8080/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="http://localhost:8080/systemjs/dist/system.src.js"></script>
+    <script src="http://localhost:8080/rxjs/bundles/Rx.js"></script>
+    <script src="http://localhost:8080/angular2/bundles/angular2.dev.js"></script>
+    <script src="http://localhost:8080/angular2/bundles/http.dev.js"></script>
+
+
+  <!--   <script src="http://localhost:8080/platform/platform.js"></script>
+ -->
+
+    <!-- 2. Configure SystemJS -->
+    <script>
+      System.config({
+        packages: {        
+          components: {
+            format: 'register',
+            defaultExtension: 'js'
+          }
+        }
+      });
+      System.import('components/boot/boot')
+            .then(null, console.error.bind(console));
+    </script>
+
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+    <app>Loading...</app>
+  </body>
+  
+  
+  
+
+</html>

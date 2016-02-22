@@ -1,0 +1,40 @@
+{
+  "name": "aloura.js",
+  "version": "0.0.1",
+  "description": "Aloura is a MVC Appication Framework, for building real-time appications.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/helixone/aloura.git"
+  },
+  "keywords": [
+    "Real",
+    "time"
+  ],
+  "author": "Zubair Lawrence",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/helixone/aloura/issues"
+  },
+  "homepage": "https://github.com/helixone/aloura#readme",
+  "devDependencies": {
+    "electron-prebuilt": "^0.36.0",
+    "typescript": "^1.7.3"
+
+  },
+  "dependencies": {
+    "angular2": "2.0.0-beta.0",
+    "lodash": "3.10.1",
+    "socket.io": "^1.4.4",
+    "systemjs": "0.19.6",
+    "es6-promise": "^3.0.2",
+    "es6-shim": "^0.33.3",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.0",
+    "zone.js": "0.5.10"
+  }
+}
