@@ -8,7 +8,7 @@ export class Time {
     time: number;
     constructor(http: Http) {
         let route = '/api/time';
-        http.get(route).subscribe(function (data) {
+        http.get(route).subscribe( (data) => {
             console.log('TIme',data)            
             var socket = io(route);
             socket.on('time', (data) => {
