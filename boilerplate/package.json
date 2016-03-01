@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watchWWW": "ntsc -w -p ./www",
-    "watchServer": "ntsc -w -p ./server",
+    "watchWWW": "./node_modules/.bin/ntsc -w -p ./www",
+    "watchServer": "./node_modules/.bin/ntsc -w -p ./server",
     "server": "nodemon ./server/server.js",
     "start": "./node_modules/.bin/concurrent \"npm run watchServer\" \"npm run watchWWW\" \"npm run server\" ",
     "electron": "./node_modules/.bin/electron ."
@@ -34,6 +34,7 @@
     "koa-static": "^2.0.0",
     "lodash": "3.10.1",
     "nodemon": "^1.8.1",
+    "ntypescript": "^1.201602292307.1",
     "platform": "^1.3.1",
     "reflect-metadata": "0.1.2",
     "rethinkdb": "^2.2.1",
