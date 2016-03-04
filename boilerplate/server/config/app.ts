@@ -11,8 +11,8 @@ config.app = {
 }
 
 var port = {
-  dev: 8080,
-  prod: process.env.PORT || 8080
+  dev: 8000,
+  prod: process.env.PORT || 8000
 }
 
 config.app.port = port[env]
