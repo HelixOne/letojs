@@ -15,11 +15,11 @@ exports.init = function (app) {
 }
 
 var getTime = function* () {
-  var route = '/api/time'
-  if (!socket.connections[route]) {
-    var ns = socket.io.of(route)
-    ns.on('connection', handleConnection(route))
-    socket.connections[route] = ns
+  var endpoint = '/api/time'
+  if (!socket.connections[endpoint]) {
+    var ns = socket.io.of(endpoint)
+    ns.on('connection', handleConnection(endpoint))
+    socket.connections[endpoint] = ns
     setInterval(function () {
       ns.emit('time', { time: Date.now() })
     }, 1000)
