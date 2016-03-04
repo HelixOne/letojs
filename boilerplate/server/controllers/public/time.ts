@@ -21,7 +21,6 @@ var getTime = function* () {
     ns.on('connection', handleConnection(route))
     socket.connections[route] = ns
     setInterval(function () {
-        console.log('Time')
       ns.emit('time', { time: Date.now() })
     }, 1000)
   }
