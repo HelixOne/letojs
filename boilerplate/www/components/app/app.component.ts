@@ -2,6 +2,7 @@ import {Component} from 'angular2/core';
 import {Leto} from '../leto/Leto';
 import {Time} from '../time/time';
 import {TaskService} from '../task/task.service';
+import uuid from 'uuid-v4/index.js';
 
 
 @Component({
@@ -26,8 +27,8 @@ import {TaskService} from '../task/task.service';
             </thead>    
             <tbody>
                 <tr *ngFor="#task of tasks">
-                    <td>{{task.name }} </td>
-        <td><span [class.done]="task.done">{{task.done ? 'DONE' : 'I\\'M WORKING ON IT'}} </span></td>
+                    <td>{{task.name }}: {{task.id}} </td>
+        <td><span [class.done]="task.done">{{task.done ? 'Done' : 'In Progress'}} </span></td>
                     <td><button class="btn btn-primary" (click)="task.done = !task.done">{{task.done ? 'Undo' : 'Done'}}</button></td>
                 </tr>
             </tbody>
@@ -38,7 +39,7 @@ import {TaskService} from '../task/task.service';
 })
 export class AppComponent {
     public tasks = [];
-    public newTask = { done: false };
+    public newTask = { done: false, id: uuid() };
 
     constructor(private _taskService: TaskService, public leto: Leto, public time: Time) {
 
@@ -53,9 +54,10 @@ export class AppComponent {
         }
 
         addTask(task){
+            console.log(task)
             if (task) {
                 this._taskService.addTask(task);
-                this.newTask = { done: false };
+                this.newTask = { done: false, id: uuid()};
             }
         }
 }
