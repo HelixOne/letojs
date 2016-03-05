@@ -29,7 +29,6 @@ module.exports = function (app) {
   // register public controllers which should come before any jwt token check and be publicly accessible
   // Loading Public Api
   var publicPath = path.join(path.dirname(__dirname), '/controllers/public')
-  console.log(publicPath)
   fs.readdirSync(publicPath).forEach(function (file) {
     if (path.parse(file).ext !== '.js') return
     require(path.join(publicPath, file)).init(app)

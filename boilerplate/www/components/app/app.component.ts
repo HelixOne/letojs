@@ -1,8 +1,11 @@
 import {Component} from 'angular2/core';
 import {Leto} from '../leto/Leto';
 import {Time} from '../time/time';
-import {TaskService} from '../task/task.service';
 import uuid from 'uuid-v4/index.js';
+import {Task} from '../task/task';
+import {TaskList} from '../task/task.list';
+import {TaskForm} from '../task/task.form';
+import {TaskService} from '../task/task.service';
 
 
 @Component({
@@ -12,52 +15,28 @@ import uuid from 'uuid-v4/index.js';
     			<p>Platform: {{leto.platform}}</p>
     			<p>OS: {{leto.os}}</p>
                 <p>Server Time: {{time.time}}
-                <hr />
-                <form>
-                <input type="text" [(ngModel)]="newTask.name" />
-        <input type="submit" class="btn btn-success"(click)="addTask(newTask)"  />
-        </form>
-        <table class="table-striped">
-            <thead>
-                <tr>
-                    <th>Task</th>
-                    <th>Status</th>
-                    <th></th>
-                </tr>
-            </thead>    
-            <tbody>
-                <tr *ngFor="#task of tasks">
-                    <td>{{task.name }}: {{task.id}} </td>
-        <td><span [class.done]="task.done">{{task.done ? 'Done' : 'In Progress'}} </span></td>
-                    <td><button class="btn btn-primary" (click)="task.done = !task.done">{{task.done ? 'Undo' : 'Done'}}</button></td>
-                </tr>
-            </tbody>
-    			`,
-                    providers: [TaskService]
+                <hr />    
+    <h2>Task</h2>
+    <task-list [tasks]="taskService.tasks"></task-list>
+    <task-form (newTask)="addTask($event)"></task-form>`,
+    styles: ['a { cursor: pointer; cursor: hand; }'],
+    directives: [TaskList, TaskForm],
+    providers:[TaskService]
+
+
 
 
 })
 export class AppComponent {
-    public tasks = [];
+    tasks: Task[] = []
+    addTask(task: Task) {
+        this.taskService.add(task);
+    }
+
     public newTask = { done: false, id: uuid() };
 
-    constructor(private _taskService: TaskService, public leto: Leto, public time: Time) {
+    constructor( public leto: Leto, public time: Time, public  taskService:TaskService) {
 
-       
     }
- ngOnInit(){
-            this.getTasks();
-        }
-
-        getTasks(){
-            this._taskService.getTasks().then(tasks => this.tasks = tasks);
-        }
-
-        addTask(task){
-            console.log(task)
-            if (task) {
-                this._taskService.addTask(task);
-                this.newTask = { done: false, id: uuid()};
-            }
-        }
+   
 }

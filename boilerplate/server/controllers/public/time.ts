@@ -30,6 +30,8 @@ var getTime = function* () {
 
 function handleConnection (token) {
   console.log('new connection')
-  return function (socket) {}
+  return function (socket) {
+      console.log('socket')
+  }
 
 }

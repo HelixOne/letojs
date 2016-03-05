@@ -13,6 +13,7 @@ rethink.connect = function* () {
     rethink.r = rethink.thinky.r
 
     require('../models/time')
+    require('../models/task')
   } catch(e) {
     console.log('Connection to DB Failed')
   }
