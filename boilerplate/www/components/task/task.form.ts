@@ -1,6 +1,8 @@
 import {Component, Output, EventEmitter} from 'angular2/core';
 import {Task} from './task';
 import uuid from 'uuid-v4/index.js';
+import {TaskService} from './task.service';
+
 @Component({
   selector: 'task-form',
   template: `
@@ -11,12 +13,20 @@ import uuid from 'uuid-v4/index.js';
     </form>`
 })
 export class TaskForm {
-  @Output() newTask = new EventEmitter<Task>();
-  task: string = '';
+  task: string = '';   
+  constructor(private _taskService: TaskService) {}
+
   addTask() {
+      
     if (this.task) {
-      this.newTask.next({name:this.task, done:false, id:uuid()});
+     let nt = {
+         name:this.task,
+         fresh:true,
+         done:false, 
+         id:uuid()}
+    this._taskService.add(nt)
     }
     this.task = '';
   }
+  
 }

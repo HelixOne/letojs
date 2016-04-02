@@ -1,0 +1,10 @@
+<h1>App:<strong>{{leto.appName}}</strong></h1>
+<h2><strong>Version:</strong>  {{leto.appVersion}}</h2>
+<p><strong>Platform:</strong> {{leto.platform}}</p>
+<p><strong>OS:</strong> {{leto.os}}</p>
+<p><strong>Server Time:</strong> {{time| async}}</p>
+
+<hr />
+<h2>Task</h2>
+<task-list [tasks]="tasks"></task-list>
+<task-form (newTask)="addTask($event)"></task-form>

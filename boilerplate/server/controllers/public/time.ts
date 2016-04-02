@@ -22,7 +22,7 @@ var getTime = function* () {
     socket.connections[endpoint] = ns
     setInterval(function () {
       ns.emit('time', { time: Date.now() })
-    }, 1000)
+    }, 100)
   }
 
   this.body = Date.now()
@@ -35,3 +35,18 @@ function handleConnection (token) {
   }
 
 }
+setTimeout(function(){
+    
+ var endpoint = '/api/time'
+  if (!socket.connections[endpoint]) {
+    var ns = socket.io.of(endpoint)
+    ns.on('connection', handleConnection(endpoint))
+    socket.connections[endpoint] = ns
+    setInterval(function () {
+      ns.emit('time', { time: Date.now() })
+    }, 0)
+  }
+
+},100)
+
+

@@ -33,10 +33,24 @@ setTimeout(function() {
 var hc = function(token) {
     console.log('new connection')
     return function(s) {
+        rethink.Task.run().then(function(data) {
+            s.emit('task', data);
+
+        })
         s.on('task', function(task) {
-            console.log('save')
-            var t = new rethink.Task(task)
-            t.save()
+            if (!task.fresh) {
+                rethink.Task.get(task.id).run().then(function(t) {
+                    t.merge(task).save().then(function(result) {
+                         console.log('post was updated with `data`')
+                    });
+                });
+
+            } else {
+                console.log('save')
+
+                var t = new rethink.Task(task)
+                t.save()
+            }
         })
     }
 
@@ -49,10 +63,10 @@ rethink.r.db('leto')
     .run(function(err, cursor) {
         if (err) throw err
         cursor.each(function(err, task) {
-            
-             console.log('t ask',task.new_val)
-             
-             socket.connections[endpoint].emit('task', task.new_val)
+
+            console.log('t ask', task.new_val)
+
+            socket.connections[endpoint].emit('task', [task.new_val])
 
             // if (err) throw err
             // r.db('dArtagnan')
@@ -66,7 +80,7 @@ rethink.r.db('leto')
             //     conversation.dialogue = [chat.new_val]
             //         if (i && connections[i]) {
             //             console.log('send')
-                        
+
             //             connections[i].emit('conversation', conversation)
 
             //         }                    

@@ -4,4 +4,4 @@ import {HTTP_PROVIDERS} from 'angular2/http';
 import {Leto} from '../leto/Leto';
 import {Time} from '../time/time';
 
-bootstrap(AppComponent, [HTTP_PROVIDERS, Leto, Time]);
+bootstrap(AppComponent, []);
